@@ -3,8 +3,24 @@
 
 // For example, to shim modules without declarations, use:
 // declare module "package-without-declarations"
-declare module "typography-theme-fairy-gates"
-declare module "typography-theme-kirkham"
+declare module "typography-theme-fairy-gates";
+declare module "typography-theme-kirkham";
 
 // And to shim assets, use (one file extension per `declare`):
 // declare module "*.png"
+
+interface CSSModule {
+  [className: string]: string;
+}
+
+// type shims for CSS modules
+
+declare module "*.module.scss" {
+  const cssModule: CSSModule;
+  export = cssModule;
+}
+
+declare module "*.module.css" {
+  const cssModule: CSSModule;
+  export = cssModule;
+}
